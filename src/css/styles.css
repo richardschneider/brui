@@ -1,0 +1,51 @@
+#page {
+    margin-top: 80px;
+}
+
+table.bids th {
+    width: 1.8em;
+    text-align: center;
+}
+
+table.bids thead {
+    border-bottom: 1px solid silver;
+}
+
+table.bids td {
+    text-align: center;
+}
+
+.bids .pass {
+    color: lightsteelblue;
+}
+.bids .double,
+.bids .redouble {
+    font-weight: bold;
+}
+
+.bidding-box {
+    border-collapse: separate;
+}
+
+.bidding-box  td {
+    background-image: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    width: 2em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.bidding-box td:hover,
+.bidding-box td:focus {
+    background-color: #EBFFD6;
+    border: 1px solid lime;
+    font-weight: bold;
+}
+
+
+.red-suit {
+    color: red;
+}

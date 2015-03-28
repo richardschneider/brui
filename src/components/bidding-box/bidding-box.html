@@ -1,0 +1,14 @@
+<table class="bidding-box">
+    <tbody data-bind="foreach: rows">
+        <tr data-bind="foreach: $data">
+            <td data-bind="text: display, css: css, click: $parents[1].select"></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2" data-bind="click: pass">Pass</td>
+            <td data-bind="click: double">X</td>
+            <td data-bind="click: redouble">XX</td>
+        </tr>
+    </tfoot>
+</table>
