@@ -77,6 +77,16 @@ describe('Card', function() {
 		expect(SQ.order).below(SK.order);
 		expect(SK.order).below(SA.order);
 	});
+	
+	it('2C is lowest', function() {
+		var C2 = new Card('2C');
+		expect(C2.order).to.equal(1);
+	});
 
-});
+	it('AS is highest', function() {
+		var AS = new Card('AS');
+		expect(AS.order).to.equal(52);
+	});
+
+	});
 
