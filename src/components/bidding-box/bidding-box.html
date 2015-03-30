@@ -1,14 +1,16 @@
-<table class="bidding-box">
+<table class="bidding-box" data-bind="css: {enabled: enabled() }">
     <tbody data-bind="foreach: rows">
         <tr data-bind="foreach: $data">
-            <td data-bind="text: display, css: css, click: $parents[1].select"></td>
+            <td data-bind="css: { bidable: $parents[1].bidable(bid) }, click: $parents[1].select">
+              <span data-bind="css: css, text: display"></span>
+            </td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="2" data-bind="click: pass">Pass</td>
-            <td data-bind="click: double">X</td>
-            <td data-bind="click: redouble">XX</td>
+            <td class="bidable" colspan="2" data-bind="click: pass">Pass</td>
+            <td class="bidable" data-bind="click: double">X</td>
+            <td class="bidable" data-bind="click: redouble">XX</td>
         </tr>
     </tfoot>
 </table>

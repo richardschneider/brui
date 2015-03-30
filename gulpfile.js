@@ -1,12 +1,30 @@
+'use strict';
+
+var paths = {
+  lint: ['./gulpfile.js', './src/components/*.js'],
+  watch: ['./gulpfile.js', './src/**', './test/**/*.js', '!test/{temp,temp/**}'],
+  tests: ['./test/models/*.js', './test/components/*.js', '!test/{temp,temp/**}'],
+  source: ['./src/models/*.js', './src/components/**/*.js']
+};
+
 // Node modules
 var fs = require('fs'), vm = require('vm'), merge = require('deeply'), chalk = require('chalk'), es = require('event-stream');
 
 // Gulp and plugins
 var gulp = require('gulp'), rjs = require('gulp-requirejs-bundler'), concat = require('gulp-concat'), clean = require('gulp-clean'),
     replace = require('gulp-replace'), uglify = require('gulp-uglify'), htmlreplace = require('gulp-html-replace');
+var plugins = require('gulp-load-plugins')();
+
+var plumberConf = {};
+
+if (process.env.CI) {
+  plumberConf.errorHandler = function(err) {
+    throw err;
+  };
+}
 
 // Config
-var requireJsRuntimeConfig = vm.runInNewContext(fs.readFileSync('src/app/require.config.js') + '; require;');
+var requireJsRuntimeConfig = vm.runInNewContext(fs.readFileSync('src/app/require.config.js') + '; require;'),
     requireJsOptimizerConfig = merge(requireJsRuntimeConfig, {
         out: 'scripts.js',
         baseUrl: './src',
@@ -62,6 +80,23 @@ gulp.task('html', function() {
 gulp.task('clean', function() {
     return gulp.src('./dist/**/*', { read: false })
         .pipe(clean());
+});
+
+// Test 
+gulp.task('test', function (cb) {
+  gulp.src(paths.source)
+    .pipe(plugins.istanbul({ includeUntested: true })) // Covering files
+    .pipe(plugins.istanbul.hookRequire()) // Force `require` to return covered files
+    .on('finish', function () {
+      gulp.src(paths.tests)
+        .pipe(plugins.plumber(plumberConf))
+        .pipe(plugins.mocha())
+        .pipe(plugins.istanbul.writeReports()) // Creating the reports after tests runned
+        .on('finish', function() {
+          process.chdir(__dirname);
+          cb();
+        });
+    });
 });
 
 gulp.task('default', ['html', 'js', 'css'], function(callback) {

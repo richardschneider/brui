@@ -25,23 +25,29 @@ table.bids td {
 
 .bidding-box {
     border-collapse: separate;
+    line-height: 1.0;
 }
-
 .bidding-box  td {
     background-image: none;
     border: 1px solid transparent;
-    cursor: pointer;
+    cursor: default;
+    opacity: 0.3;
     text-align: center;
-    width: 2em;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    padding: 2px;
+	pointer-events: none;
 }
-.bidding-box td:hover,
-.bidding-box td:focus {
+.bidding-box td.bidable {
+    opacity: 1;
+}
+.bidding-box.enabled td.bidable {
+    cursor: pointer;
+	pointer-events: auto;
+}
+.bidding-box.enabled td.bidable:hover,
+.bidding-box.enabled td.bidable:focus {
     background-color: #EBFFD6;
     border: 1px solid lime;
+    border-radius: 4px;
     font-weight: bold;
 }
 
