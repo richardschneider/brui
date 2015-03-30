@@ -11,7 +11,22 @@ define(function () {
 		if (this.play.length < 4) {
 			return undefined;
 		}
-		// TODO
+
+		var bestSeat, bestOrder = -10000, order;
+		for (i = 0; i < 4; ++i)
+		{
+			var play = this.play[i];
+			var order = play.card.order;
+			if (play.card.suit === contract.denomination) {
+				order *= 1000;
+			}
+			if (order > bestOrder) {
+				bestOrder = order;
+				bestSeat = play.seat;
+			}
+		}
+
+		return bestSeat;
 	};
 	
 	return Trick;
