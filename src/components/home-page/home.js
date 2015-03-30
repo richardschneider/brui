@@ -1,9 +1,9 @@
-define(["knockout", "text!./home.html"], function(ko, homeTemplate) {
+define(["knockout", "bid", "text!./home.html"], function(ko, bid, homeTemplate) {
 
   function HomeViewModel(route) {
     this.message = ko.observable('Welcome to brui!');
     this.dealer = ko.observable('S');
-    this.auction = ko.observableArray(['1C', '-'])
+    this.auction = ko.observableArray([bid['1C'], bid['-']])
   }
 
   HomeViewModel.prototype.doSomething = function() {

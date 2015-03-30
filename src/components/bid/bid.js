@@ -2,30 +2,26 @@ define(['knockout', 'text!./bid.html'], function(ko, templateMarkup) {
 
   function Bid(params) {
     this.bid = ko.observable(params.bid);
-    this.level = ko.observable();
+    this.level = ko.observable(params.bid.level);
     this.levelCss = ko.observable();
-    this.denomination = ko.observable();
+    this.denomination = ko.observable(params.bid.denomination);
     this.denominationCss = ko.observable();
     
-    if (params.bid == 'P' || params.bid == '/' || params.bid == '-' || params.bid == 'Pass') {
+    if (params.bid.isPass) {
         this.level('-');
         this.levelCss('pass');
-    } else if (params.bid == 'X') {
-        this.level(params.bid);
+    } else if (params.bid.isDouble) {
+        this.level('X');
         this.levelCss('double');
-    } else if (params.bid == 'XX') {
-        this.level(params.bid);
+    } else if (params.bid.isRedouble) {
+        this.level('XX');
         this.levelCss('redouble');
-    } else if (params.bid.indexOf('NT') > 0) {
-        this.level(params.bid.charAt(0));
-        this.denomination('NT');
+    } else if (params.bid.denomination === 'NT') {
         this.denominationCss('no-trump');
     } else {
-        var symbol = { S: '\u2660', H: '\u2665', D: '\u2666', C: '\u2663' },
-            d = params.bid.charAt(1);
-        this.level(params.bid.charAt(0));
-        this.denomination(symbol[d] || d);
-        this.denominationCss(d == 'S' || d == 'C' ? 'black-suit' : 'red-suit');
+        var symbol = { S: '\u2660', H: '\u2665', D: '\u2666', C: '\u2663' };
+        this.denomination(symbol[params.bid.denomination]);
+        this.denominationCss(params.bid.isRed ? 'red-suit' : 'black-suit');
     }
   }
 

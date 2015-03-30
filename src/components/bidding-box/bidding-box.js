@@ -1,4 +1,4 @@
-define(['knockout', 'text!./bidding-box.html'], function(ko, templateMarkup) {
+define(['knockout', 'bid', 'text!./bidding-box.html'], function(ko, bid, templateMarkup) {
 
     function BiddingBox(params) {
         var self = this;
@@ -8,43 +8,37 @@ define(['knockout', 'text!./bidding-box.html'], function(ko, templateMarkup) {
             self.bids.push(data.bid);
         };
         self.pass = function() {
-            self.bids.push('-');
+            self.bids.push(bid['-']);
         }
         self.double = function() {
-            self.bids.push('X');
+            self.bids.push(bid['X']);
         }
         self.redouble = function() {
-            self.bids.push('XX');
+            self.bids.push(bid['XX']);
         }
         
         self.rows = [];
-        self.allBids = [];
         for (var i = 0; i < 7; ++i) {
             var level = i + 1;
             this.rows[i] = [
-                { bid: level + 'C', css: 'black-suit', display: level + '\u2663' },
-                { bid: level + 'D', css: 'red-suit', display: level + '\u2666' },
-                { bid: level + 'H', css: 'red-suit', display: level + '\u2665' },
-                { bid: level + 'S', css: 'black-suit', display: level + '\u2660' },
-                { bid: level + 'NT', css: 'no-trump', display: level + 'NT' }
+                { bid: bid[level + 'C'], css: 'black-suit', display: level + '\u2663' },
+                { bid: bid[level + 'D'], css: 'red-suit', display: level + '\u2666' },
+                { bid: bid[level + 'H'], css: 'red-suit', display: level + '\u2665' },
+                { bid: bid[level + 'S'], css: 'black-suit', display: level + '\u2660' },
+                { bid: bid[level + 'NT'], css: 'no-trump', display: level + 'NT' }
             ];
-            self.allBids.push(this.rows[i][0].bid);            
-            self.allBids.push(this.rows[i][1].bid);            
-            self.allBids.push(this.rows[i][2].bid);            
-            self.allBids.push(this.rows[i][3].bid);            
-            self.allBids.push(this.rows[i][4].bid);            
         }
         
         self.bidable = function(bid) {
             return ko.computed(function() {
-                var lastBid = '';
+                var lastBid;
                 for (var i = self.bids().length - 1; 0 <= i; --i) {
                     lastBid = self.bids()[i];
-                    if (lastBid == '-' || lastBid == 'P' || lastBid == '/' || lastBid == 'Pass' || lastBid == 'X' || lastBid == 'XX')
+                    if (lastBid.isPass || lastBid.isDouble || lastBid.isRedouble)
                         continue;
-                    break;
+					return lastBid.order < bid.order;
                 }
-                return self.allBids.indexOf(lastBid) < self.allBids.indexOf(bid);
+				return true;
         })};
         
         
