@@ -25,45 +25,45 @@ describe('Card', function() {
     });
 		
 	it('has rank and suit', function() {
-		var card = new Card('2S');
+		var card = Card['2S'];
 		expect(card.rank).to.equal('2');
 		expect(card.suit).to.equal('S');
 	});
 
 	it('rank can be 10 or T', function() {
-		var card = new Card('10S');
+		var card = Card['10S'];
 		expect(card.rank).to.equal('10');
 		expect(card.suit).to.equal('S');
 
-		card = new Card('TS');
+		card = Card['TS'];
 		expect(card.rank).to.equal('10');
 		expect(card.suit).to.equal('S');
 	});
 	
 	it('is ordered by suit', function() {
-		var club = new Card('AC');
-		var diamond = new Card('AD');
-		var heart = new Card('AH');
-		var spade = new Card('AS');
+		var club = Card['AC'];
+		var diamond = Card['AD'];
+		var heart = Card['AH'];
+		var spade = Card['AS'];
 		expect(club.order).below(diamond.order);
 		expect(diamond.order).below(heart.order);
 		expect(heart.order).below(spade.order);
 	});
 	
 	it('is ordered by rank within suit', function() {
-		var S2 = new Card('2S');
-		var S3 = new Card('3S');
-		var S4 = new Card('4S');
-		var S5 = new Card('5S');
-		var S6 = new Card('6S');
-		var S7 = new Card('7S');
-		var S8 = new Card('8S');
-		var S9 = new Card('9S');
-		var ST = new Card('TS');
-		var SJ = new Card('JS');
-		var SQ = new Card('QS');
-		var SK = new Card('KS');
-		var SA = new Card('AS');
+		var S2 = Card['2S'];
+		var S3 = Card['3S'];
+		var S4 = Card['4S'];
+		var S5 = Card['5S'];
+		var S6 = Card['6S'];
+		var S7 = Card['7S'];
+		var S8 = Card['8S'];
+		var S9 = Card['9S'];
+		var ST = Card['TS'];
+		var SJ = Card['JS'];
+		var SQ = Card['QS'];
+		var SK = Card['KS'];
+		var SA = Card['AS'];
 		expect(S2.order).below(S3.order);
 		expect(S3.order).below(S4.order);
 		expect(S4.order).below(S5.order);
@@ -79,12 +79,12 @@ describe('Card', function() {
 	});
 	
 	it('2C is lowest', function() {
-		var C2 = new Card('2C');
+		var C2 = Card['2C'];
 		expect(C2.order).to.equal(1);
 	});
 
 	it('AS is highest', function() {
-		var AS = new Card('AS');
+		var AS = Card['AS'];
 		expect(AS.order).to.equal(52);
 	});
 

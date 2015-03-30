@@ -20,14 +20,24 @@ define(function () {
 		'H': 2 * 13,
 		'S': 3 * 13
 	};
-	function Card(s) {
-		if (s.indexOf('T') === 0) {
-			s = '10' + s.charAt(1);
-		}
-		this.rank = s.substr(0, s.length - 1);
-		this.suit = s.substr(s.length - 1);
+	function Card(rank, suit) {
+		this.rank = rank;
+		this.suit = suit;
 		this.order = rankOffset[this.rank] + suitOffset[this.suit];
 	}
+	
+	var allCards = {};
+	for (var rank in rankOffset) {
+		for (var suit in suitOffset) {
+			var card = new Card(rank, suit);
+			allCards[rank + suit] = card;
+			allCards[suit + rank] = card;
+			if (rank == '10') {
+				allCards['T' + suit] = card;
+				allCards[suit + 'T'] = card;
+			}
+		}
+	}
 
-	return Card;
+	return allCards;
 });

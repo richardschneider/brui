@@ -40,10 +40,10 @@ describe('Trick', function() {
 		contract.denomination = 'NT';
 		var trick = new Trick();
 		expect(trick.winner()).to.be.undefined;
-		trick.play.push({ seat: 'N', card: new Card('2S') } );
-		trick.play.push({ seat: 'E', card: new Card('KS') } );
-		trick.play.push({ seat: 'S', card: new Card('AH') } );
-		trick.play.push({ seat: 'W', card: new Card('3S') } );
+		trick.play.push({ seat: 'N', card: Card.S2 } );
+		trick.play.push({ seat: 'E', card: Card.SK } );
+		trick.play.push({ seat: 'S', card: Card.HA } );
+		trick.play.push({ seat: 'W', card: Card.S3 } );
 		expect(trick.winner(contract)).to.exist;
 	});
 	
@@ -52,10 +52,11 @@ describe('Trick', function() {
 		contract.denomination = 'NT';
 		var trick = new Trick();
 		expect(trick.winner()).to.be.undefined;
-		trick.play.push({ seat: 'N', card: new Card('3S') } );
-		trick.play.push({ seat: 'E', card: new Card('KS') } );
-		trick.play.push({ seat: 'S', card: new Card('AH') } );
-		trick.play.push({ seat: 'W', card: new Card('2S') } );
+
+		trick.play.push({ seat: 'N', card: Card.S3 } );
+		trick.play.push({ seat: 'E', card: Card.SK } );
+		trick.play.push({ seat: 'S', card: Card.HA } );
+		trick.play.push({ seat: 'W', card: Card.S2 } );
 		expect(trick.winner(contract)).to.equal('E');
 	});
 
@@ -64,10 +65,10 @@ describe('Trick', function() {
 		contract.denomination = 'H';
 		var trick = new Trick();
 		expect(trick.winner()).to.be.undefined;
-		trick.play.push({ seat: 'N', card: new Card('AS') } );
-		trick.play.push({ seat: 'E', card: new Card('QH') } );
-		trick.play.push({ seat: 'S', card: new Card('KH') } );
-		trick.play.push({ seat: 'W', card: new Card('2S') } );
+		trick.play.push({ seat: 'N', card: Card.SA } );
+		trick.play.push({ seat: 'E', card: Card.HQ } );
+		trick.play.push({ seat: 'S', card: Card.HK } );
+		trick.play.push({ seat: 'W', card: Card.S2 } );
 		expect(trick.winner(contract)).to.equal('S');
 	});
 
