@@ -88,5 +88,9 @@ describe('Card', function() {
 		expect(AS.order).to.equal(52);
 	});
 
+	it('has an SVG image', function() {
+		expect(Card.AS.imageUrl()).to.contain('.svg');
 	});
+	
+});
 

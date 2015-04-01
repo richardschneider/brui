@@ -1,6 +1,6 @@
 define(function () {
 	function Trick() {
-		this.play = [];
+		this.play = [];  // each object has a card and seat property.
 	}
 	
 	Trick.prototype.leader = function() {

@@ -51,6 +51,15 @@ table.bids td {
     font-weight: bold;
 }
 
+.trick-box {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+.trick-box .card { 
+	position: absolute;
+}
+
 
 .red-suit {
     color: red;

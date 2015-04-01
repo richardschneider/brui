@@ -10,6 +10,8 @@ var require = {
         "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections",
         "signals":              "bower_modules/js-signals/dist/signals.min",
 		"bid":					"models/bid",
+		"trick":				"models/trick",
+		"card":					"models/card",
         "text":                 "bower_modules/requirejs-text/text"
     },
     shim: {

@@ -1,0 +1,14 @@
+<div class="trick-box">
+  <!-- ko if: north() -->
+	<img class='north card' data-bind="attr: {src: north().imageUrl()}, style: { width: cardWidth, left: two, top: 0, zIndex: northOrder() }">
+  <!-- /ko -->
+  <!-- ko if: east() -->
+	<img class='east card' data-bind="attr: { src: east().imageUrl()}, style: { width: cardWidth, left: four, top: one, zIndex: eastOrder()}">
+  <!-- /ko -->
+  <!-- ko if: south() -->
+	<img class='south card' data-bind="attr: { src: south().imageUrl()}, style: { width: cardWidth, left: two, top: three, zIndex: southOrder() }">
+  <!-- /ko -->
+  <!-- ko if: west() -->
+	<img class='west card' data-bind="attr: { src: west().imageUrl()}, style: { width: cardWidth, left: 0, top: one, zIndex: westOrder() }">
+  <!-- /ko -->
+</div>

@@ -2,6 +2,7 @@
 node_modules/
 bower_modules/
 coverage/
+cards/
 
 # Don't track build output
 dist/

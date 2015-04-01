@@ -15,6 +15,8 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-projections'], 
 
   ko.components.register('bidding-box', { require: 'components/bidding-box/bidding-box' });
 
+  ko.components.register('trick-box', { require: 'components/trick-box/trick-box' });
+
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
   // Start the application

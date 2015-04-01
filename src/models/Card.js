@@ -1,4 +1,5 @@
 define(function () {
+
 	var rankOffset = {
 		'2': 1,
 		'3': 2,
@@ -24,6 +25,10 @@ define(function () {
 		this.rank = rank;
 		this.suit = suit;
 		this.order = rankOffset[this.rank] + suitOffset[this.suit];
+	}
+
+	Card.prototype.imageUrl = function() {
+		return 'cards/' + this.rank + this.suit + '.svg';
 	}
 	
 	var allCards = {};
