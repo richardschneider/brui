@@ -31,18 +31,23 @@ define(function () {
 		return 'cards/' + this.rank + this.suit + '.svg';
 	}
 	
-	var allCards = {};
+	var cards = {all: []};
 	for (var rank in rankOffset) {
 		for (var suit in suitOffset) {
 			var card = new Card(rank, suit);
-			allCards[rank + suit] = card;
-			allCards[suit + rank] = card;
+			cards.all.push(card);
+			cards[rank + suit] = card;
+			cards[suit + rank] = card;
 			if (rank == '10') {
-				allCards['T' + suit] = card;
-				allCards[suit + 'T'] = card;
+				cards['T' + suit] = card;
+				cards[suit + 'T'] = card;
 			}
 		}
 	}
+	/** a deck of 52 cards */
+	cards.deck = function() {
+		return this.all.slice();
+	}
 
-	return allCards;
+	return cards;
 });

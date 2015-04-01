@@ -94,3 +94,17 @@ describe('Card', function() {
 	
 });
 
+describe('Deck', function() {
+	var Card;
+    before(function(done) {
+        requirejs(['models/card'], function(module) {
+            Card = module;
+            done();
+        });
+    });
+
+	it('has 52 cards', function() {
+		expect(Card.deck().length).to.equal(52);
+	});
+	
+});
