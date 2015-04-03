@@ -1,5 +1,6 @@
 {
     "jscodehints.detectedExclusions": [
-        "D:/My Projects/Bridge/brui/src/bower_modules/jquery/src/outro.js"
+        "D:/My Projects/Bridge/brui/src/bower_modules/jquery/src/outro.js",
+        "sizzle.js"
     ]
 }

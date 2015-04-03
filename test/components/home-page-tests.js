@@ -10,6 +10,7 @@ requirejs.config({
         "knockout":             "bower_modules/knockout/dist/knockout",
         "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections",
         "signals":              "bower_modules/js-signals/dist/signals.min",
+        "bridge":               "bower_modules/bridge.js/dist/bridge.min",
         "text":                 "bower_modules/requirejs-text/text"
     }
 });
@@ -21,26 +22,26 @@ describe('Home page tests', function() {
     // module loading
     // Load modules with requirejs before tests
     var homePage;
-	var homePageViewModel;
+    var homePageViewModel;
     before(function(done) {
         requirejs(['components/home-page/home', 'chai'], function(module) {
             homePage = module;
-			homePageViewModel = homePage.viewModel;
+            homePageViewModel = homePage.viewModel;
             done();
         });
     });
-	
-	describe('view model', function() {
-		it('should supply a friendly message which changes when acted upon', function() {
-			var instance = new homePageViewModel();
-			var msg = instance.message(); 
-			msg.should.contain('Welcome to ');
 
-			// See the message change
-			instance.doSomething();
-			instance.message().should.contain('You invoked doSomething()');
-		});
-	});
+    describe('view model', function() {
+        it('should supply a friendly message which changes when acted upon', function() {
+            var instance = new homePageViewModel();
+            var msg = instance.message();
+            msg.should.contain('Welcome to ');
+
+            // See the message change
+            instance.doSomething();
+            instance.message().should.contain('You invoked doSomething()');
+        });
+    });
 
 });
 

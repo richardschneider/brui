@@ -1,7 +1,8 @@
-define(['knockout', 'bid', 'text!./bidding-box.html'], function(ko, bid, templateMarkup) {
+define(['knockout', 'bridge', 'text!./bidding-box.html'], function(ko, bridge, templateMarkup) {
 
     function BiddingBox(params) {
-        var self = this;
+        var self = this,
+            bid = bridge.bid;
         self.bids = params.bids;
         self.enabled = params.enabled || ko.observable(true);
         self.select = function(data, event) {
@@ -16,7 +17,7 @@ define(['knockout', 'bid', 'text!./bidding-box.html'], function(ko, bid, templat
         self.redouble = function() {
             self.bids.push(bid['XX']);
         }
-        
+
         self.rows = [];
         for (var i = 0; i < 7; ++i) {
             var level = i + 1;
@@ -28,7 +29,7 @@ define(['knockout', 'bid', 'text!./bidding-box.html'], function(ko, bid, templat
                 { bid: bid[level + 'NT'], css: 'no-trump', display: level + 'NT' }
             ];
         }
-        
+
         self.bidable = function(bid) {
             return ko.computed(function() {
                 var lastBid;
@@ -36,18 +37,18 @@ define(['knockout', 'bid', 'text!./bidding-box.html'], function(ko, bid, templat
                     lastBid = self.bids()[i];
                     if (lastBid.isPass || lastBid.isDouble || lastBid.isRedouble)
                         continue;
-					return lastBid.order < bid.order;
+                    return lastBid.order < bid.order;
                 }
-				return true;
+                return true;
         })};
-        
-        
+
+
     }
 
   // This runs when the component is torn down. Put here any logic necessary to clean up,
   // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
   BiddingBox.prototype.dispose = function() { };
-  
+
   return { viewModel: BiddingBox, template: templateMarkup };
 
 });

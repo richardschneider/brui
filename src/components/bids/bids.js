@@ -2,20 +2,19 @@ define(['knockout', 'text!./bids.html'], function(ko, templateMarkup) {
 
     function Bids(params) {
         var self = this;
-		self.dealer = params.dealer || ko.observable('W');
+        self.dealer = params.dealer;
         self.bids = params.bids || ko.observableArray();
-        
+
         self.seats = ko.computed(function () {
-            var next = {W: 'N', N: 'E', E: 'S', S: 'W'},
-                seat = self.dealer(),
+            var seat = self.dealer(),
                 seats = [];
             for (var i = 0; i < 4; ++i) {
                 seats.push(seat);
-                seat = next[seat];
+                seat = seat.next;
             }
             return seats;
         });
-        
+
         self.rows = ko.computed(function() {
             var rows = [];
             for (var i = 0; i < self.bids().length; ++i) {
