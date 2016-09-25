@@ -18,6 +18,7 @@ define(["knockout", "bridge", "cards", "cards-ko", "jquery", "text!./table.html"
         self.auction = ko.observable(game.auction);
         self.bids = ko.observableArray(game.auction.bids);
         self.bidding = ko.pureComputed(function() {
+            self.bids(); // tell KO we are dependent on the bids.
             return !self.auction().isClosed();
         });
 
