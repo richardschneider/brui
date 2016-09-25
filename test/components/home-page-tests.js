@@ -10,7 +10,7 @@ requirejs.config({
         "knockout":             "bower_modules/knockout/dist/knockout",
         "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections",
         "signals":              "bower_modules/js-signals/dist/signals.min",
-        "bridge":               "bower_modules/bridge.js/dist/bridge.min",
+        "bridge":               "https://unpkg.com/bridge.js/dist/bridge.min",
         "text":                 "bower_modules/requirejs-text/text"
     }
 });
