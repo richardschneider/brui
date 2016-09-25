@@ -1,0 +1,75 @@
+<style>
+
+.bridge-table {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 2px;
+    margin: 2px;
+    width: 720px;
+    height: 500px;
+    text-align: center;
+    font-weight: bold;
+    background-color: forestgreen;
+}
+    .inline-block {
+        display: inline-block;
+    }
+
+.lho {
+  position: relative;
+  top: 50%;
+  left: 3%;
+transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+.rho {
+  position: relative;
+  top: 40%;
+  left: 97%;
+transform:  translateX(-50%)  rotate(90deg);
+}
+.player {
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    width: 90%;
+    }
+.partner {
+    margin: 0 auto;
+}
+    .felt {
+   display:table-cell;
+    vertical-align:middle;
+    float:none;
+        margin: 0 auto;
+    }
+
+    #bidding-box {
+        margin-left: 3em;
+        background-color: whitesmoke;
+        font-size: larger;
+    }
+    .board-info {
+    margin-top: -3.2ex;
+    text-align: left;
+    font-size: larger;
+    }
+</style>
+
+
+
+<div class="bridge-table">
+    <div class='board-info'>
+        Board 1 - Dealer north, <span style="color: red">N/S vulnerable</span>
+    </div>
+  <div class="partner">partner</div>
+    <div class="player">
+        <div class='hand inline-block' data-bind='click: play, fan: {radius: 141, spacing: 0.2, width: 88, cards: cards}'></div>
+        <bidding-box id='bidding-box' class='inline-block' params="bids: auction"></bidding-box>
+  </div>
+    <div class='felt'>
+        <bids params="dealer: dealer, bids: auction"></bids>
+    </div>
+  <div class="lho">lho</div>
+  <div class="rho">rho</div>
+</div>
+

@@ -10,7 +10,9 @@ var require = {
         "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections",
         "signals":              "bower_modules/js-signals/dist/signals.min",
         "bridge":				"bower_modules/bridge.js/dist/bridge.min",
-        "text":                 "bower_modules/requirejs-text/text"
+        "text":                 "bower_modules/requirejs-text/text",
+        "cards":                "bower_modules/cardsJS/cards",
+        "cards-ko":             "bower_modules/cardsJS/cards-ko"
     },
     shim: {
         "bootstrap": { deps: ["jquery"] }
