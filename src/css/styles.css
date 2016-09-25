@@ -50,6 +50,11 @@ table.bids td {
     border-radius: 4px;
     font-weight: bold;
 }
+.bidding-box .club { color: green; }
+.bidding-box .diamond { color: orange; }
+.bidding-box .heart { color: red; }
+.bidding-box .spade { color: blue; }
+.bidding-box .no-trump { color: black; }
 
 .trick-box {
 	display: inline-block;

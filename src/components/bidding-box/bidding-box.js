@@ -22,10 +22,10 @@ define(['knockout', 'bridge', 'text!./bidding-box.html'], function(ko, bridge, t
         for (var i = 0; i < 7; ++i) {
             var level = i + 1;
             this.rows[i] = [
-                { bid: bid[level + 'C'], css: 'black-suit', display: level + '\u2663' },
-                { bid: bid[level + 'D'], css: 'red-suit', display: level + '\u2666' },
-                { bid: bid[level + 'H'], css: 'red-suit', display: level + '\u2665' },
-                { bid: bid[level + 'S'], css: 'black-suit', display: level + '\u2660' },
+                { bid: bid[level + 'C'], css: 'club', display: level + '\u2663' },
+                { bid: bid[level + 'D'], css: 'diamond', display: level + '\u2666' },
+                { bid: bid[level + 'H'], css: 'heart', display: level + '\u2665' },
+                { bid: bid[level + 'S'], css: 'spade', display: level + '\u2660' },
                 { bid: bid[level + 'NT'], css: 'no-trump', display: level + 'NT' }
             ];
         }
