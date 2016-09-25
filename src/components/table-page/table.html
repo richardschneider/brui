@@ -67,19 +67,29 @@
 
 <div class="bridge-table">
     <div class='board-info'>
-        Board 1 -
+        Board <span data-bind='text: board().number'></span> -
         Dealer <span data-bind='text: dealer'></span>,
         <span style="color: red">N/S vulnerable</span>
     </div>
-  <div class="partner">partner</div>
+
+    <div class="partner">partner</div>
+
     <div class="player">
-        <div class='hand inline-block' data-bind='click: play, fan: {radius: 141, spacing: 0.2, width: 88, cards: cards}'></div>
-        <bidding-box id='bidding-box' class='inline-block panel panel-default' params="bids: auction"></bidding-box>
-  </div>
-    <div id='auction' class='inline-block panel panel-default'>
-        <bids params="dealer: dealer, bids: auction"></bids>
+        <div class='hand inline-block'
+            data-bind='click: play, fan: {radius: 141, spacing: 0.2, width: 88, cards: cards}'>
+        </div>
+        <bidding-box id='bidding-box'
+            class='inline-block panel panel-default'
+            data-bind='visible: bidding()'
+            params="bids: bids">
+        </bidding-box>
     </div>
-  <div class="lho">lho</div>
-  <div class="rho">rho</div>
+
+    <div id='auction' class='inline-block panel panel-default'>
+        <bids params="dealer: dealer, bids: bids"></bids>
+    </div>
+
+    <div class="lho">lho</div>
+    <div class="rho">rho</div>
 </div>
 
