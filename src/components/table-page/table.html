@@ -36,18 +36,22 @@ transform:  translateX(-50%)  rotate(90deg);
 .partner {
     margin: 0 auto;
 }
-    .felt {
-   display:table-cell;
-    vertical-align:middle;
-    float:none;
-        margin: 0 auto;
-    }
 
     #bidding-box {
         margin-left: 3em;
-        background-color: whitesmoke;
+        margin-bottom: 0;
+        background-color: white;
         font-size: larger;
     }
+
+    #auction {
+        background-color: white;
+        font-size: larger;
+        position: absolute;
+        top: 30%;
+        left: 40%;
+    }
+
     .board-info {
     margin-top: -3.2ex;
     text-align: left;
@@ -64,9 +68,9 @@ transform:  translateX(-50%)  rotate(90deg);
   <div class="partner">partner</div>
     <div class="player">
         <div class='hand inline-block' data-bind='click: play, fan: {radius: 141, spacing: 0.2, width: 88, cards: cards}'></div>
-        <bidding-box id='bidding-box' class='inline-block' params="bids: auction"></bidding-box>
+        <bidding-box id='bidding-box' class='inline-block panel panel-default' params="bids: auction"></bidding-box>
   </div>
-    <div class='felt'>
+    <div id='auction' class='inline-block panel panel-default'>
         <bids params="dealer: dealer, bids: auction"></bids>
     </div>
   <div class="lho">lho</div>
