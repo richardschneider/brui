@@ -4,9 +4,18 @@
             <th data-bind="text: symbol"></th>
         </tr>
     </thead>
-    <tbody data-bind="foreach: rows">
-        <tr data-bind="foreach: $data">
-            <td><bid params="bid: $data"></bid></td>
-        </tr>
-    </tbody>
+    <!-- ko if: rows().length === 0 -->
+        <tbody data-bind="if: rows().length === 0">
+            <tr><td>&#160;</td></tr>
+        </tbody>
+    <!-- /ko -->
+
+    <!-- ko if: rows().length !== 0 -->
+        <tbody data-bind="foreach: rows">
+            <tr data-bind="foreach: $data">
+                <td><bid params="bid: $data"></bid></td>
+            </tr>
+        </tbody>
+    <!-- /ko -->
+
 </table>
