@@ -12,9 +12,18 @@ define(["knockout", "bridge", "cards", "cards-ko", "jquery", "text!./table.html"
         var game = new bridge.Game();
         game.auction.dealer = board.dealer;
 
+        // Dealing
         self.board = ko.observable(board);
         self.dealer = ko.observable(board.dealer);
         self.cards = ko.observableArray(board.hands.south.cards);
+        self.nsVulnerable = ko.pureComputed(function() {
+            return self.board().isVulnerable(bridge.seat.north);
+        });
+        self.ewVulnerable = ko.pureComputed(function() {
+            return self.board().isVulnerable(bridge.seat.east);
+        });
+
+        // Bidding
         self.auction = ko.observable(game.auction);
         self.bids = ko.observableArray(game.auction.bids);
         self.bidding = ko.pureComputed(function() {
@@ -22,6 +31,7 @@ define(["knockout", "bridge", "cards", "cards-ko", "jquery", "text!./table.html"
             return !self.auction().isClosed();
         });
 
+        // Playing
         self.play = function (data, event) {
             var card = bridge.card[cards.cid($(event.target))];
             self.cards.remove(card);

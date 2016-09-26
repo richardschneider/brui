@@ -59,8 +59,8 @@
     .board-info {
         margin-top: -3.2ex;
         text-align: left;
-        font-size: larger;
-        }
+        font-weight: normal;
+    }
 </style>
 
 
@@ -69,7 +69,10 @@
     <div class='board-info'>
         Board <span data-bind='text: board().number'></span> -
         Dealer <span data-bind='text: dealer'></span>,
-        <span style="color: red">N/S vulnerable</span>
+        <span data-bind="if: nsVulnerable()" style="color: red">N/S vulnerable,</span>
+        <span data-bind="ifnot: nsVulnerable()">N/S not vulnerable,</span>
+        <span data-bind="if: ewVulnerable()" style="color: red">E/W vulnerable</span>
+        <span data-bind="ifnot: ewVulnerable()">E/W not vulnerable</span>
     </div>
 
     <div class="partner">partner</div>
