@@ -9,10 +9,10 @@ var require = {
         "knockout":             "bower_modules/knockout/dist/knockout",
         "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections",
         "signals":              "bower_modules/js-signals/dist/signals.min",
-        "bridge":				 "https://unpkg.com/bridge.js/dist/bridge.min",
+        "bridge":				"https://unpkg.com/bridge.js/dist/bridge.min",
         "text":                 "bower_modules/requirejs-text/text",
-        "cards":                "bower_modules/cardsJS/cards",
-        "cards-ko":             "bower_modules/cardsJS/cards-ko"
+        "cards":                "https://unpkg.com/cardsJS/dist/cards.min",
+        "cards-ko":             "https://unpkg.com/cardsJS/dist/cards-ko.min"
     },
     shim: {
         "bootstrap": { deps: ["jquery"] }

@@ -1,11 +1,11 @@
-define(["knockout", "bridge", "text!./home.html"], function(ko, bridge, homeTemplate) {
+define(["knockout", "bridge", "cards", "text!./home.html"], function(ko, bridge, cards, homeTemplate) {
 
   function HomeViewModel(route) {
     var seat = bridge.seat;
     var card = bridge.card;
     this.message = ko.observable('Welcome to brui!');
     this.dealer = ko.observable(seat.south);
-    this.auction = ko.observableArray([bridge.bid['1C'], bridge.bid['-']])
+    this.auction = ko.observableArray([bridge.bid['1C'], bridge.bid['-']]);
     this.trick = new bridge.Trick();
     this.play = ko.observableArray(this.trick.play);
     this.play.push({seat: seat.south, card: card.S2});

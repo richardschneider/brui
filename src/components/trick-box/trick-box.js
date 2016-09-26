@@ -1,4 +1,4 @@
-define(['knockout', 'bridge', 'text!./trick-box.html'], function(ko, bridge, templateMarkup) {
+define(['knockout', 'bridge', 'cards', 'cards-ko', 'text!./trick-box.html'], function(ko, bridge, cards, cardsKO, templateMarkup) {
 
   function TrickBox(params) {
      var self = this,
@@ -14,7 +14,7 @@ define(['knockout', 'bridge', 'text!./trick-box.html'], function(ko, bridge, tem
             if (play[i].seat === seat) {
                 return play[i].card;
             }
-        };
+        }
         return undefined;
     }
 
@@ -36,7 +36,7 @@ define(['knockout', 'bridge', 'text!./trick-box.html'], function(ko, bridge, tem
             if (play[i].seat === seat) {
                 return i;
             }
-        };
+        }
         return -1;
     }
 
