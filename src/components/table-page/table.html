@@ -61,6 +61,30 @@
         text-align: left;
         font-weight: normal;
     }
+
+    /*
+     * xs (extra small, phone) adjustments.
+     */
+    @media only screen and (max-width: 768px) {
+        .bridge-table {
+            background-color: darkseagreen;
+            position: absolute;
+            left: -1px;
+            width: 100vw;
+            height: 87vh;
+        }
+        #bidding-box {
+            position: fixed;
+            top: 35vh;
+            display: block;
+            right: 8vw;
+        }
+        #auction {
+            position: fixed;
+            top: 35vh;
+            left: 8vw;
+        }
+    }
 </style>
 
 
@@ -69,10 +93,10 @@
     <div class='board-info'>
         Board <span data-bind='text: board().number'></span> -
         Dealer <span data-bind='text: dealer'></span>,
-        <span data-bind="if: nsVulnerable()" style="color: red">N/S vulnerable,</span>
-        <span data-bind="ifnot: nsVulnerable()">N/S not vulnerable,</span>
-        <span data-bind="if: ewVulnerable()" style="color: red">E/W vulnerable</span>
-        <span data-bind="ifnot: ewVulnerable()">E/W not vulnerable</span>
+        <span data-bind="if: nsVulnerable()" style="color: red">NS vuln,</span>
+        <span data-bind="ifnot: nsVulnerable()">NS not vuln,</span>
+        <span data-bind="if: ewVulnerable()" style="color: red">EW vuln</span>
+        <span data-bind="ifnot: ewVulnerable()">EW not vuln</span>
     </div>
 
     <div class="partner">partner</div>
