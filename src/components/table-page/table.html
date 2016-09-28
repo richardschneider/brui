@@ -5,10 +5,7 @@
         border: 1px solid #ccc;
         padding: 2px;
         margin: 2px;
-        width: 720px;
         height: 500px;
-        text-align: center;
-        font-weight: bold;
         background-color: forestgreen;
     }
 
@@ -35,6 +32,7 @@
         bottom: 0;
         margin: 0 auto;
         width: 90%;
+        text-align: center;
     }
 
     .partner {
@@ -42,8 +40,6 @@
     }
 
     #bidding-box {
-        margin-left: 3em;
-        margin-bottom: 0;
         background-color: white;
         font-size: larger;
     }
@@ -51,9 +47,6 @@
     #auction {
         background-color: white;
         font-size: larger;
-        position: absolute;
-        top: 30%;
-        left: 40%;
     }
 
     .board-info {
@@ -65,58 +58,58 @@
     /*
      * xs (extra small, phone) adjustments.
      */
+
     @media only screen and (max-width: 768px) {
         .bridge-table {
             background-color: darkseagreen;
-            position: absolute;
-            left: -1px;
+            margin-left: -15px;
             width: 100vw;
             height: 87vh;
         }
-        #bidding-box {
-            position: fixed;
-            top: 35vh;
-            display: block;
-            right: 8vw;
-        }
-        #auction {
-            position: fixed;
-            top: 35vh;
-            left: 8vw;
-        }
-    }
 </style>
 
 
+<div class="row">
+    <div class="col-sm-6 bridge-main">
+        <div class="bridge-table">
+            <div class='board-info'>
+                Board <span data-bind='text: board().number'></span> -
+                Dealer <span data-bind='text: dealer'></span>,
+                <span data-bind="if: nsVulnerable()" style="color: red">NS vuln,</span>
+                <span data-bind="ifnot: nsVulnerable()">NS not vuln,</span>
+                <span data-bind="if: ewVulnerable()" style="color: red">EW vuln</span>
+                <span data-bind="ifnot: ewVulnerable()">EW not vuln</span>
+            </div>
 
-<div class="bridge-table">
-    <div class='board-info'>
-        Board <span data-bind='text: board().number'></span> -
-        Dealer <span data-bind='text: dealer'></span>,
-        <span data-bind="if: nsVulnerable()" style="color: red">NS vuln,</span>
-        <span data-bind="ifnot: nsVulnerable()">NS not vuln,</span>
-        <span data-bind="if: ewVulnerable()" style="color: red">EW vuln</span>
-        <span data-bind="ifnot: ewVulnerable()">EW not vuln</span>
-    </div>
+            <div class="partner">partner</div>
 
-    <div class="partner">partner</div>
+            <div class="row bidding" data-bind='visible: bidding()'>
+                <div class='col-xs-5'>
+                <div id='auction' class='inline-block panel panel-default'>
+                    <bids params="dealer: dealer, bids: bids"></bids>
+                </div>
+                    </div>
+                <div class='col-xs-7'>
+                <bidding-box id='bidding-box'
+                    class='inline-block panel panel-default'
+                    params="bids: bids">
+                </bidding-box>
+                    </div>
+            </div>
 
-    <div class="player">
-        <div class='hand inline-block'
-            data-bind='click: play, fan: {radius: 141, spacing: 0.2, width: 88, cards: cards}'>
+            <div class="player">
+                <div class='hand inline-block'
+                    data-bind='click: play, fan: {radius: 141, spacing: 0.2, width: 88, cards: cards}'>
+                </div>
+            </div>
+
+            <div class="lho">lho</div>
+            <div class="rho">rho</div>
         </div>
-        <bidding-box id='bidding-box'
-            class='inline-block panel panel-default'
-            data-bind='visible: bidding()'
-            params="bids: bids">
-        </bidding-box>
     </div>
 
-    <div id='auction' class='inline-block panel panel-default'>
-        <bids params="dealer: dealer, bids: bids"></bids>
+    <div class="col-sm-6 bridge-sidebar">
+        <h2>Info</h2>
+        Some random text heere.
     </div>
-
-    <div class="lho">lho</div>
-    <div class="rho">rho</div>
 </div>
-
