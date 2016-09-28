@@ -37,6 +37,11 @@
 
     .partner {
         margin: 0 auto;
+        text-align: center;
+    }
+
+    .bidding, .partner {
+        padding-top: 5px;
     }
 
     #bidding-box {
@@ -81,7 +86,9 @@
                 <span data-bind="ifnot: ewVulnerable()">EW not vuln</span>
             </div>
 
-            <div class="partner">partner</div>
+            <div class="partner" data-bind="if: playing()">
+                <dummy-hand class='inline-block' params="board: board, contract: contract"></dummy-hand>
+            </div>
 
             <div class="row bidding" data-bind='visible: bidding()'>
                 <div class='col-xs-5'>

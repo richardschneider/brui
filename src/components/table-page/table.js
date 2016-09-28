@@ -30,8 +30,17 @@ define(["knockout", "bridge", "cards", "cards-ko", "jquery", "text!./table.html"
             self.bids(); // tell KO we are dependent on the bids.
             return !self.auction().isClosed();
         });
+        self.bids.subscribe(function() {
+            if (self.auction().isClosed()) {
+                self.contract(self.auction().contract());
+            }
+        });
 
         // Playing
+        self.contract = ko.observable(game.contract);
+        self.playing = ko.pureComputed(function() {
+           return !self.bidding();
+        });
         self.play = function (data, event) {
             var card = bridge.card[cards.cid($(event.target))];
             self.cards.remove(card);
