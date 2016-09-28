@@ -3,7 +3,20 @@ define(["knockout", "bridge", "cards", "text!./home.html"], function(ko, bridge,
   function HomeViewModel(route) {
     var seat = bridge.seat;
     var card = bridge.card;
+    var board = new bridge.Board();
+    board.number = 2;
+    board.dealer = bridge.seat.south;
+    board.hands = new bridge.Deck()
+        .shuffle()
+        .deal(bridge.seat.south);
+    var contract = new bridge.Contract();
+    contract.level = 3;
+    contract.denomination = 'H';
+    contract.declaror = bridge.seat.south;
+
     this.message = ko.observable('Welcome to brui!');
+    this.board = board;
+    this.contract = contract;
     this.dealer = ko.observable(seat.south);
     this.auction = ko.observableArray([bridge.bid['1C'], bridge.bid['-']]);
     this.trick = new bridge.Trick();

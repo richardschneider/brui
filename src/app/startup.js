@@ -14,12 +14,10 @@ define(['jquery', 'knockout', './router', 'bridge', 'cards', 'bootstrap', 'knock
   });
 
   ko.components.register('bids', { require: 'components/bids/bids' });
-
   ko.components.register('bid', { require: 'components/bid/bid' });
-
   ko.components.register('bidding-box', { require: 'components/bidding-box/bidding-box' });
-
   ko.components.register('trick-box', { require: 'components/trick-box/trick-box' });
+  ko.components.register('dummy-hand', { require: 'components/dummy-hand/dummy-hand' });
 
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
