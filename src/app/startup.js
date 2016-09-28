@@ -1,4 +1,7 @@
-define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-projections'], function($, ko, router) {
+define(['jquery', 'knockout', './router', 'bridge', 'cards', 'bootstrap', 'knockout-projections'], function($, ko, router, bridge, cards) {
+
+  // Link the card images
+  bridge.card.imagePath(cards.options.imagesUrl);
 
   // Components can be packaged as AMD modules, such as the following:
   ko.components.register('nav-bar', { require: 'components/nav-bar/nav-bar' });
