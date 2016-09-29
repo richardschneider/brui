@@ -13,6 +13,7 @@
         display: inline-block;
     }
 
+/*
     .lho {
         position: relative;
         top: 50%;
@@ -20,11 +21,39 @@
         transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
     }
 
-    .rho {
+*/
+    .lho {
+        display: block;
         position: relative;
+        left: 10px;
         top: 40%;
-        left: 97%;
-        transform:  translateX(-50%)  rotate(90deg);
+        -webkit-transform: translateY(-40%);
+        -ms-transform: translateY(-40%);
+        transform: translateY(-40%);
+    }
+    .lho .hand {
+        display: block !important;
+        margin-top: -75% !important;
+    }
+    .lho .hand:first-child {
+        margin-top: 0 !important;
+    }
+
+    .rho {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 40%;
+        -webkit-transform: translateY(-40%);
+        -ms-transform: translateY(-40%);
+        transform: translateY(-40%);
+    }
+    .rho .hand {
+        display: block !important;
+        margin-top: -75% !important;
+    }
+    .rho .hand:first-child {
+        margin-top: 0 !important;
     }
 
     .player {
@@ -86,8 +115,8 @@
                 <span data-bind="ifnot: ewVulnerable()">EW not vuln</span>
             </div>
 
-            <div class="partner" data-bind="if: playing()">
-                <dummy-hand class='inline-block' params="board: board, contract: contract"></dummy-hand>
+            <div class="partner" data-bind="if: playing() && contract().dummy() === seat().partner">
+                <dummy-hand class='inline-block' params="board: board, contract: contract, viewer: seat"></dummy-hand>
             </div>
 
             <div class="row bidding" data-bind='visible: bidding()'>
@@ -110,8 +139,13 @@
                 </div>
             </div>
 
-            <div class="lho">lho</div>
-            <div class="rho">rho</div>
+            <div class="lho" data-bind="if: playing() && contract().dummy() === seat().lho">
+                <dummy-hand class='inline-block' params="board: board, contract: contract, viewer: seat"></dummy-hand>
+            </div>
+
+            <div class="rho" data-bind="if: playing() && contract().dummy() === seat().rho">
+                <dummy-hand class='inline-block' params="board: board, contract: contract, viewer: seat"></dummy-hand>
+            </div>
         </div>
     </div>
 

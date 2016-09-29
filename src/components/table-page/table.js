@@ -12,10 +12,13 @@ define(["knockout", "bridge", "cards", "cards-ko", "jquery", "text!./table.html"
         var game = new bridge.Game();
         game.auction.dealer = board.dealer;
 
+        // Seating
+        self.seat = ko.observable(bridge.seat.south);
+
         // Dealing
         self.board = ko.observable(board);
         self.dealer = ko.observable(board.dealer);
-        self.cards = ko.observableArray(board.hands.south.cards);
+        self.cards = ko.observableArray(board.hands[self.seat()].cards);
         self.nsVulnerable = ko.pureComputed(function() {
             return self.board().isVulnerable(bridge.seat.north);
         });

@@ -3,8 +3,15 @@ define(['knockout', 'bridge', 'cards', 'cards-ko', 'text!./dummy-hand.html'], fu
     function DummyHand(params) {
         var self = this;
         var dummy = params.contract().dummy();
+        var viewer = params.viewer || ko.observable(bridge.seat.south);
         self.hand = params.board().hands[dummy];
-
+        self.flow = ko.pureComputed(function() {
+            var dummy = params.contract().dummy();
+            if (viewer().lho === dummy || viewer().rho === dummy) {
+                return 'horizontal';
+            }
+            return 'vertical';
+        });
         self.suits = ko.pureComputed(function() {
             var suits = ['S', 'H', 'D', 'C'];
             var strain = params.contract().denomination;
