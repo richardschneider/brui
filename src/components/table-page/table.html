@@ -7,21 +7,13 @@
         margin: 2px;
         height: 500px;
         background-color: forestgreen;
+        overflow: hidden;
     }
 
     .inline-block {
         display: inline-block;
     }
 
-/*
-    .lho {
-        position: relative;
-        top: 50%;
-        left: 3%;
-        transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
-    }
-
-*/
     .lho {
         display: block;
         position: relative;
@@ -58,7 +50,7 @@
 
     .player {
         position: absolute;
-        bottom: 0;
+        bottom: -80px;
         margin: 0 auto;
         width: 90%;
         text-align: center;
@@ -83,12 +75,6 @@
         font-size: larger;
     }
 
-    .board-info {
-        margin-top: -3.2ex;
-        text-align: left;
-        font-weight: normal;
-    }
-
     /*
      * xs (extra small, phone) adjustments.
      */
@@ -105,16 +91,16 @@
 
 <div class="row">
     <div class="col-sm-6 bridge-main">
-        <div class="bridge-table">
-            <div class='board-info'>
-                Board <span data-bind='text: board().number'></span> -
-                Dealer <span data-bind='text: dealer'></span>,
-                <span data-bind="if: nsVulnerable()" style="color: red">NS vuln,</span>
-                <span data-bind="ifnot: nsVulnerable()">NS not vuln,</span>
-                <span data-bind="if: ewVulnerable()" style="color: red">EW vuln</span>
-                <span data-bind="ifnot: ewVulnerable()">EW not vuln</span>
-            </div>
+        <div class='board-info'>
+            Board <span data-bind='text: board().number'></span> -
+            Dealer <span data-bind='text: dealer'></span>,
+            <span data-bind="if: nsVulnerable()" style="color: red">NS vuln,</span>
+            <span data-bind="ifnot: nsVulnerable()">NS not vuln,</span>
+            <span data-bind="if: ewVulnerable()" style="color: red">EW vuln</span>
+            <span data-bind="ifnot: ewVulnerable()">EW not vuln</span>
+        </div>
 
+        <div class="bridge-table">
             <div class="partner" data-bind="if: playing() && contract().dummy() === seat().partner">
                 <dummy-hand class='inline-block' params="board: board, contract: contract, viewer: seat"></dummy-hand>
             </div>
