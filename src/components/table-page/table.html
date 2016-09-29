@@ -150,7 +150,12 @@
     </div>
 
     <div class="col-sm-6 bridge-sidebar">
-        <h2>Info</h2>
-        Some random text heere.
+        <h4>Contract <span data-bind='text: contract().toString()'></span></h4>
+
+        <h4>Bidding history</h4>
+        <div>
+            <bids params="dealer: dealer, bids: bids"></bids>
+        </div>
+
     </div>
 </div>
