@@ -15,9 +15,6 @@ table.bids td {
     text-align: center;
 }
 
-.bids .pass {
-    color: lightsteelblue;
-}
 .bids .double,
 .bids .redouble {
     font-weight: bold;

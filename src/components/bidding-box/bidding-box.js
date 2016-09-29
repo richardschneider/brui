@@ -10,23 +10,23 @@ define(['knockout', 'bridge', 'text!./bidding-box.html'], function(ko, bridge, t
         };
         self.pass = function() {
             self.bids.push(bid['-']);
-        }
+        };
         self.double = function() {
-            self.bids.push(bid['X']);
-        }
+            self.bids.push(bid.X);
+        };
         self.redouble = function() {
-            self.bids.push(bid['XX']);
-        }
+            self.bids.push(bid.XX);
+        };
 
         self.rows = [];
         for (var i = 0; i < 7; ++i) {
             var level = i + 1;
             this.rows[i] = [
-                { bid: bid[level + 'C'], css: 'club', display: level + '\u2663' },
-                { bid: bid[level + 'D'], css: 'diamond', display: level + '\u2666' },
-                { bid: bid[level + 'H'], css: 'heart', display: level + '\u2665' },
+                { bid: bid[level + 'NT'], css: 'no-trump', display: level + 'NT' },
                 { bid: bid[level + 'S'], css: 'spade', display: level + '\u2660' },
-                { bid: bid[level + 'NT'], css: 'no-trump', display: level + 'NT' }
+                { bid: bid[level + 'H'], css: 'heart', display: level + '\u2665' },
+                { bid: bid[level + 'D'], css: 'diamond', display: level + '\u2666' },
+                { bid: bid[level + 'C'], css: 'club', display: level + '\u2663' }
             ];
         }
 
@@ -40,7 +40,8 @@ define(['knockout', 'bridge', 'text!./bidding-box.html'], function(ko, bridge, t
                     return lastBid.order < bid.order;
                 }
                 return true;
-        })};
+        });
+    };
 
 
     }
