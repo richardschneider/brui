@@ -62,7 +62,40 @@ table.bids td {
 	position: absolute;
 }
 
+.black-suit {
+    color: black;
+}
 
 .red-suit {
     color: red;
+}
+
+
+table.card-play {
+    border-collapse: separate;
+    line-height: 1.2;
+}
+
+table.card-play th {
+    width: 2em;
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+table.card-play th {
+    border-bottom: 1px solid silver;
+}
+
+
+table.card-play td {
+    border: 1px solid transparent;
+    text-align: center;
+    padding: 1px;
+}
+
+table.card-play td.winner {
+    background-color: #EBFFD6;
+    border: 1px solid lime;
+    border-radius: 4px;
+    font-weight: bold;
 }

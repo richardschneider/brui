@@ -1,0 +1,21 @@
+<table class="card-play">
+    <thead>
+        <tr data-bind="foreach: seats">
+            <th data-bind="text: symbol"></th>
+        </tr>
+    </thead>
+    <!-- ko if: tricks().length === 0 -->
+        <tbody>
+            <tr><td>&#160;</td></tr>
+        </tbody>
+    <!-- /ko -->
+
+    <!-- ko if: tricks().length !== 0 -->
+        <tbody data-bind="foreach: { data: tricks, as: 'trick' }">
+            <tr class="trick" data-bind="foreach: { data: $parent.seats, as: 'seat' }">
+                <td data-bind="text: trick.card(seat), css: { winner: trick.winner($component.contract()) === seat }"></td>
+            </tr>
+        </tbody>
+    <!-- /ko -->
+
+</table>

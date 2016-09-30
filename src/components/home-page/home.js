@@ -13,9 +13,16 @@ define(["knockout", "bridge", "cards", "text!./home.html"], function(ko, bridge,
     contract.level = 3;
     contract.denomination = 'H';
     contract.declaror = bridge.seat.south;
+    var game = new bridge.Game();
+    game.contract = contract;
+    game.play('S2', 'SK', 'SA', 'C4');
+    game.play('HA', 'HK', 'H3', 'H4');
+    game.play('C2', 'CA', 'CK', 'C5');
+    game.play('D2');
 
     this.message = ko.observable('Welcome to brui!');
     this.board = ko.observable(board);
+    this.game = ko.observable(game);
     this.contract = ko.observable(contract);
     this.dealer = ko.observable(seat.south);
     this.auction = ko.observableArray([bridge.bid['1C'], bridge.bid['-']]);
