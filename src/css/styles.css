@@ -93,6 +93,10 @@ table.card-play td {
     padding: 1px;
 }
 
+table.card-play td.leader {
+    text-decoration: underline;
+}
+
 table.card-play td.winner {
     background-color: #EBFFD6;
     border: 1px solid lime;

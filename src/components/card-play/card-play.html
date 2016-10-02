@@ -13,7 +13,7 @@
     <!-- ko if: tricks().length !== 0 -->
         <tbody data-bind="foreach: { data: tricks, as: 'trick' }">
             <tr class="trick" data-bind="foreach: { data: $parent.seats, as: 'seat' }">
-                <td data-bind="text: trick.card(seat), css: { winner: trick.winner($component.contract()) === seat }"></td>
+                <td data-bind="text: trick.card(seat), css: { leader: trick.leader() === seat, winner: trick.winner($component.contract()) === seat }"></td>
             </tr>
         </tbody>
     <!-- /ko -->
