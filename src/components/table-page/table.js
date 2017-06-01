@@ -4,7 +4,7 @@ define(["knockout", "bridge", "cards", "cards-ko", "jquery", "text!./table.html"
         var self = this;
 
         var board = new bridge.Board();
-        board.number = 666;
+        board.setNumber(666);
         board.dealer = bridge.seat.south;
         board.hands = new bridge.Deck()
             .shuffle()
